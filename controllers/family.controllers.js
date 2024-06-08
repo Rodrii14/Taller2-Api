@@ -4,12 +4,14 @@ const familyControllers = {};
 
 familyControllers.create = async( req, res, next ) => {
     try {
-        const { id, canton, housingType, riskLevel } = req.body;
+        const { id, canton, housingType, riskLevel, latitude, longitude } = req.body;
         const family = new familyModel({
             id: id,
             canton: canton,
             housingType: housingType,
-            riskLevel: riskLevel
+            riskLevel: riskLevel,
+            latitude: latitude,
+            longitude: longitude
         });
         const savedFamily = await family.save();
         if(!savedFamily){
